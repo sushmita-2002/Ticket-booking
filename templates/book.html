@@ -2,34 +2,6 @@
 
 {% block body %}
 
-<script type="text/javascript">
-var subcategory = {
-Chhattisgarh: ["Bhubaneswar","Puri","Cuttack"],
-Jharkhand: ["Mumbai","Pune","Nagpur"],
-Maharashtra: ["kochi","Kanpur"]
-West Bengal: ["kochi","Kanpur"]
-}
-function makeSubmenu(value) {
-            if (value.length == 0) document.getElementById("categorySelect").innerHTML = "<option></option>";
-            else {
-                var citiesOptions = "";
-                for (categoryId in subcategory[value]) {
-                    citiesOptions += "<option>" + subcategory[value][categoryId] + "</option>";
-                }
-                document.getElementById("categorySelect").innerHTML = citiesOptions;
-            }
- }
-function displaySelected() {
-            var country = document.getElementById("category").value;
-            var city = document.getElementById("categorySelect").value;
-            alert(country + "\n" + city);
-        }
-function resetSelection() {
-            document.getElementById("category").selectedIndex = 0;
-            document.getElementById("categorySelect").selectedIndex = 0;
- }
-</script>
-
 <div class="container" my-4>
    <h1  class='my-5 text-center' style='color:green'><u>Select Museum</u></h1>
    <label for="state" style='font-size:20px'>Select state</label>
