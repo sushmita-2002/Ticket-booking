@@ -1,0 +1,82 @@
+{% extends 'base.html' %} 
+
+{% block body %}
+
+<script type="text/javascript">
+var subcategory = {
+Chhattisgarh: ["Bhubaneswar","Puri","Cuttack"],
+Jharkhand: ["Mumbai","Pune","Nagpur"],
+Maharashtra: ["kochi","Kanpur"]
+West Bengal: ["kochi","Kanpur"]
+}
+function makeSubmenu(value) {
+            if (value.length == 0) document.getElementById("categorySelect").innerHTML = "<option></option>";
+            else {
+                var citiesOptions = "";
+                for (categoryId in subcategory[value]) {
+                    citiesOptions += "<option>" + subcategory[value][categoryId] + "</option>";
+                }
+                document.getElementById("categorySelect").innerHTML = citiesOptions;
+            }
+ }
+function displaySelected() {
+            var country = document.getElementById("category").value;
+            var city = document.getElementById("categorySelect").value;
+            alert(country + "\n" + city);
+        }
+function resetSelection() {
+            document.getElementById("category").selectedIndex = 0;
+            document.getElementById("categorySelect").selectedIndex = 0;
+ }
+</script>
+
+<div class="container" my-4>
+   <h1  class='my-5 text-center' style='color:green'><u>Select Museum</u></h1>
+   <label for="state" style='font-size:20px'>Select state</label>
+   <select id='category' class="form-select mb-4" aria-label="Default select example" onchange="makeSubmenu(this.value)">
+	<option selected>State</option>
+  	<option value="1">Chhattisgarh</option>
+  	<option value="2">Jharkhand</option>
+  	<option value="3">Maharashtra</option>
+	<option value="4">West Bengal</option>
+   </select>
+   
+   <label for="city" style='font-size:20px'>Select city</label>
+   <select id='categorySelect' class="form-select mb-4" aria-label="Default select example">
+  	<option selected>City</option>
+  	<option></option>
+   </select>
+
+   <label for="museum" style='font-size:20px'>Select Museum</label>
+   <select class="form-select mb-4" aria-label="Default select example">
+  	<option selected>Museum</option>
+  	<option value="1">One</option>
+  	<option value="2">Two</option>
+  	<option value="3">Three</option>
+   </select>
+   <div class="mb-4">
+  <label for="date" style='font-size:20px'>Visit date</label>
+  <input type="date" class="form-control" id="date" name="date" placeholder="Enter date">
+  </div>
+  <div class="mb-4">
+  <label for="time" style='font-size:20px'>Visiting Time</label>
+  <input type="time" class="form-control" id="time" name="time" placeholder="Enter time">
+  <p style='text-align:right'>Valid till 6:30pm</p>
+  </div>
+
+  <div class='mb-4 text-left'>
+   <h5 style='color:red'>Term and conditions*</h5>
+   <ul>
+	<li>No refund or exchange</li>
+	<li>Tickets are non-transferable</li>
+   </ul>
+  </div>
+  
+   <div class='text-center'>
+   <a class="btn btn-dark mb-5" href="/details" role="button" style='color:white'>Want to proceed</a>
+   <a class="btn btn-dark mb-5" href="/" role="button" style='color:white'>Back to home</a>  
+   </div>
+</div>
+
+{% endblock body %}
+
